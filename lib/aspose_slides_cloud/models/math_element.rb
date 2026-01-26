@@ -64,7 +64,7 @@ module AsposeSlidesCloud
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      type_validator = EnumAttributeValidator.new('String', ['Accent', 'Array', 'Bar', 'Block', 'BorderBox', 'Box', 'Delimiter', 'Text', 'Fraction', 'Function', 'GroupingCharacter', 'LeftSubSuperscriptElement', 'Limit', 'Matrix', 'NaryOperator', 'Radical', 'RightSubSuperscriptElement', 'SubscriptElement', 'SuperscriptElement'])
+      type_validator = EnumAttributeValidator.new('String', ['Accent', 'Array', 'Bar', 'Block', 'BorderBox', 'Box', 'Delimiter', 'Text', 'Fraction', 'Function', 'GroupingCharacter', 'LeftSubSuperscriptElement', 'Limit', 'Matrix', 'NaryOperator', 'Radical', 'RightSubSuperscriptElement', 'SubscriptElement', 'SuperscriptElement', 'Phantom'])
       return false unless type_validator.valid?(@type)
       true
     end
@@ -72,7 +72,7 @@ module AsposeSlidesCloud
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] type Object to be assigned
     def type=(type)
-      validator = EnumAttributeValidator.new('String', ['Accent', 'Array', 'Bar', 'Block', 'BorderBox', 'Box', 'Delimiter', 'Text', 'Fraction', 'Function', 'GroupingCharacter', 'LeftSubSuperscriptElement', 'Limit', 'Matrix', 'NaryOperator', 'Radical', 'RightSubSuperscriptElement', 'SubscriptElement', 'SuperscriptElement'])
+      validator = EnumAttributeValidator.new('String', ['Accent', 'Array', 'Bar', 'Block', 'BorderBox', 'Box', 'Delimiter', 'Text', 'Fraction', 'Function', 'GroupingCharacter', 'LeftSubSuperscriptElement', 'Limit', 'Matrix', 'NaryOperator', 'Radical', 'RightSubSuperscriptElement', 'SubscriptElement', 'SuperscriptElement', 'Phantom'])
       unless validator.valid?(type)
         fail ArgumentError, 'invalid value for "type", must be one of #{validator.allowable_values}.'
       end

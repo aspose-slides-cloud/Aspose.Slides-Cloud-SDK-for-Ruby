@@ -86,7 +86,7 @@
 		{ "Value": "changedtest.pptx", "Parameter": "Name", "Method": "/CreatePresentationFrom/" },
 		{ "Value": "video.pptx", "Parameter": "Name", "Method": "/CaptionTrack/" },
 		{ "Value": "macros.pptm", "Parameter": "Name", "Method": "/Vba/" },
-		{ "Value": "Arial", "Parameter": "FontNames", "Type": "string[]" },
+		{ "Value": ["Arial"], "InvalidValue": null, "Parameter": "FontNames", "Type": "string[]" },
 		{ "Value": "testProperty", "Parameter": "PropertyName" },
 		{ "Value": "TempSlidesSDK", "Parameter": "Folder" },
 		{ "Value": "password", "Parameter": "/Password/" },

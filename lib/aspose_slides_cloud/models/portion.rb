@@ -76,6 +76,9 @@ module AsposeSlidesCloud
     # True if numbers should ignore East-Asian specific vertical text layout.
     attr_accessor :kumimoji
 
+    # true to enable spell checking for the portion.
+    attr_accessor :spell_check
+
     # Proving language ID.
     attr_accessor :language_id
 
@@ -138,6 +141,7 @@ module AsposeSlidesCloud
         :'smart_tag_clean' => :'SmartTagClean',
         :'kerning_minimal_size' => :'KerningMinimalSize',
         :'kumimoji' => :'Kumimoji',
+        :'spell_check' => :'SpellCheck',
         :'language_id' => :'LanguageId',
         :'alternative_language_id' => :'AlternativeLanguageId',
         :'is_hard_underline_fill' => :'IsHardUnderlineFill',
@@ -175,6 +179,7 @@ module AsposeSlidesCloud
         :'smart_tag_clean' => :'BOOLEAN',
         :'kerning_minimal_size' => :'Float',
         :'kumimoji' => :'String',
+        :'spell_check' => :'BOOLEAN',
         :'language_id' => :'String',
         :'alternative_language_id' => :'String',
         :'is_hard_underline_fill' => :'String',
@@ -263,6 +268,10 @@ module AsposeSlidesCloud
 
       if attributes.has_key?(:'Kumimoji')
         self.kumimoji = attributes[:'Kumimoji']
+      end
+
+      if attributes.has_key?(:'SpellCheck')
+        self.spell_check = attributes[:'SpellCheck']
       end
 
       if attributes.has_key?(:'LanguageId')
@@ -480,6 +489,7 @@ module AsposeSlidesCloud
           smart_tag_clean == o.smart_tag_clean &&
           kerning_minimal_size == o.kerning_minimal_size &&
           kumimoji == o.kumimoji &&
+          spell_check == o.spell_check &&
           language_id == o.language_id &&
           alternative_language_id == o.alternative_language_id &&
           is_hard_underline_fill == o.is_hard_underline_fill &&
@@ -505,7 +515,7 @@ module AsposeSlidesCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [self_uri, alternate_links, text, math_paragraph, font_bold, font_italic, font_underline, strikethrough_type, text_cap_type, escapement, spacing, font_color, highlight_color, font_height, normalise_height, proof_disabled, smart_tag_clean, kerning_minimal_size, kumimoji, language_id, alternative_language_id, is_hard_underline_fill, is_hard_underline_line, fill_format, effect_format, line_format, underline_fill_format, underline_line_format, hyperlink_click, hyperlink_mouse_over, latin_font, east_asian_font, complex_script_font].hash
+      [self_uri, alternate_links, text, math_paragraph, font_bold, font_italic, font_underline, strikethrough_type, text_cap_type, escapement, spacing, font_color, highlight_color, font_height, normalise_height, proof_disabled, smart_tag_clean, kerning_minimal_size, kumimoji, spell_check, language_id, alternative_language_id, is_hard_underline_fill, is_hard_underline_line, fill_format, effect_format, line_format, underline_fill_format, underline_line_format, hyperlink_click, hyperlink_mouse_over, latin_font, east_asian_font, complex_script_font].hash
     end
   end
 end

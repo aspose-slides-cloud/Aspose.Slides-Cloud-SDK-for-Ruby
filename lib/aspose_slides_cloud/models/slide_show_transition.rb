@@ -97,6 +97,9 @@ module AsposeSlidesCloud
     # Spokes.
     attr_accessor :spokes
 
+    # The duration of the slide transition effect in milliseconds. If not set, the duration is determined automatically based on Speed and Type values.
+    attr_accessor :duration
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -124,6 +127,7 @@ module AsposeSlidesCloud
         :'shred_pattern' => :'ShredPattern',
         :'orientation' => :'Orientation',
         :'spokes' => :'Spokes',
+        :'duration' => :'Duration',
       }
     end
 
@@ -154,6 +158,7 @@ module AsposeSlidesCloud
         :'shred_pattern' => :'String',
         :'orientation' => :'String',
         :'spokes' => :'Integer',
+        :'duration' => :'Integer',
       }
     end
 
@@ -259,6 +264,10 @@ module AsposeSlidesCloud
 
       if attributes.has_key?(:'Spokes')
         self.spokes = attributes[:'Spokes']
+      end
+
+      if attributes.has_key?(:'Duration')
+        self.duration = attributes[:'Duration']
       end
     end
 
@@ -471,7 +480,8 @@ module AsposeSlidesCloud
           corner_and_center_direction == o.corner_and_center_direction &&
           shred_pattern == o.shred_pattern &&
           orientation == o.orientation &&
-          spokes == o.spokes
+          spokes == o.spokes &&
+          duration == o.duration
     end
 
     # @see the `==` method
@@ -483,7 +493,7 @@ module AsposeSlidesCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [type, advance_after, advance_after_time, advance_on_click, sound_is_built_in, sound_loop, sound_mode, sound_name, speed, corner_direction, eight_direction, in_out_direction, has_bounce, side_direction, pattern, left_right_direction, morph_type, from_black, orientation_direction, through_black, corner_and_center_direction, shred_pattern, orientation, spokes].hash
+      [type, advance_after, advance_after_time, advance_on_click, sound_is_built_in, sound_loop, sound_mode, sound_name, speed, corner_direction, eight_direction, in_out_direction, has_bounce, side_direction, pattern, left_right_direction, morph_type, from_black, orientation_direction, through_black, corner_and_center_direction, shred_pattern, orientation, spokes, duration].hash
     end
   end
 end

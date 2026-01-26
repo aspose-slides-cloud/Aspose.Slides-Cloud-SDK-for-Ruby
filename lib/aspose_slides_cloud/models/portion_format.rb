@@ -112,6 +112,9 @@ module AsposeSlidesCloud
     # Returns or sets the complex script font info.
     attr_accessor :complex_script_font
 
+    # true to enable spell checking for the portion.
+    attr_accessor :spell_check
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -144,6 +147,7 @@ module AsposeSlidesCloud
         :'latin_font' => :'LatinFont',
         :'east_asian_font' => :'EastAsianFont',
         :'complex_script_font' => :'ComplexScriptFont',
+        :'spell_check' => :'SpellCheck',
       }
     end
 
@@ -179,6 +183,7 @@ module AsposeSlidesCloud
         :'latin_font' => :'String',
         :'east_asian_font' => :'String',
         :'complex_script_font' => :'String',
+        :'spell_check' => :'BOOLEAN',
       }
     end
 
@@ -304,6 +309,10 @@ module AsposeSlidesCloud
 
       if attributes.has_key?(:'ComplexScriptFont')
         self.complex_script_font = attributes[:'ComplexScriptFont']
+      end
+
+      if attributes.has_key?(:'SpellCheck')
+        self.spell_check = attributes[:'SpellCheck']
       end
     end
 
@@ -473,7 +482,8 @@ module AsposeSlidesCloud
           hyperlink_mouse_over == o.hyperlink_mouse_over &&
           latin_font == o.latin_font &&
           east_asian_font == o.east_asian_font &&
-          complex_script_font == o.complex_script_font
+          complex_script_font == o.complex_script_font &&
+          spell_check == o.spell_check
     end
 
     # @see the `==` method
@@ -485,7 +495,7 @@ module AsposeSlidesCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [font_bold, font_italic, font_underline, strikethrough_type, text_cap_type, escapement, spacing, font_color, highlight_color, font_height, normalise_height, proof_disabled, smart_tag_clean, kerning_minimal_size, kumimoji, language_id, alternative_language_id, is_hard_underline_fill, is_hard_underline_line, fill_format, effect_format, line_format, underline_fill_format, underline_line_format, hyperlink_click, hyperlink_mouse_over, latin_font, east_asian_font, complex_script_font].hash
+      [font_bold, font_italic, font_underline, strikethrough_type, text_cap_type, escapement, spacing, font_color, highlight_color, font_height, normalise_height, proof_disabled, smart_tag_clean, kerning_minimal_size, kumimoji, language_id, alternative_language_id, is_hard_underline_fill, is_hard_underline_line, fill_format, effect_format, line_format, underline_fill_format, underline_line_format, hyperlink_click, hyperlink_mouse_over, latin_font, east_asian_font, complex_script_font, spell_check].hash
     end
   end
 end
