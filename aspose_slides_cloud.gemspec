@@ -31,7 +31,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Victor Putrov"]
   s.email       = ["victor.putrov@aspose.com"]
-  s.homepage    = "https://github.com/aspose-slides-cloud/aspose-slides-cloud-ruby"
+  s.homepage    = "https://github.com/aspose-slides-cloud/Aspose.Slides-Cloud-SDK-for-Ruby"
   s.summary     = "Aspose.Slides Cloud SDK"
   s.description = "SDK for Aspose.Slides Cloud"
   s.license     = "MIT"
