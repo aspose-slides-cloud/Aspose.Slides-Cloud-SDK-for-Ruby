@@ -821,7 +821,7 @@ describe 'UseCases' do
       file_name = "test.pptx"
       password = "password"
       AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
-      result = AsposeSlidesCloud::SpecUtils.testSlidesApi.create_shape(file_name, 3, nil, 1, 1, nil, nil, password, folder_name)
+      result = AsposeSlidesCloud::SpecUtils.testSlidesApi.create_shape(file_name, 3, nil, 1, 1, nil, password, folder_name)
       expect(result).not_to be_nil
     end
   end

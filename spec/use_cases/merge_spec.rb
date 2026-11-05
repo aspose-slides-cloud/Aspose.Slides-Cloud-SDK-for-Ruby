@@ -115,7 +115,7 @@ describe 'UseCases' do
       presentation_to_merge1.path = folder_name + "/" + file_name
       presentation_to_merge1.password = password
       presentation_to_merge2 = AsposeSlidesCloud::PresentationToMerge.new
-      presentation_to_merge2.slides = [2]
+      presentation_to_merge2.slides = [1]
       presentation_to_merge2.source = "Url"
       presentation_to_merge2.path = "https://www.dropbox.com/scl/fi/nz3yt2wpg4eugiw12bz3g/info.pptx?rlkey=wju4vbi6h46q8733tzzvfgufz&e=1&st=pqt66x86&dl=1"
       request.presentations = [presentation_to_merge1, presentation_to_merge2]

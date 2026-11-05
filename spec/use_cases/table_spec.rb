@@ -295,6 +295,40 @@ describe 'UseCases' do
             expect(result.paragraph_links.length).to eq(0)
         end
 
+        it 'download table cell paragraph' do
+            folder_name = "TempSlidesSDK"
+            file_name = "test.pptx"
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+            slide_index = 9
+            shape_index = 1
+            row_index = 1
+            cell_index = 1
+            paragraph_index = 1
+
+            result = AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph(file_name, slide_index, shape_index,
+                row_index, cell_index, paragraph_index, 'png', nil, nil, nil, "password", folder_name)
+            expect(result).not_to be_nil
+            expect(result.size).to be > 0
+        end
+
+        it 'save table cell paragraph' do
+            folder_name = "TempSlidesSDK"
+            file_name = "test.pptx"
+            out_path = folder_name + "/tableCellParagraph.png"
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+
+            slide_index = 9
+            shape_index = 1
+            row_index = 1
+            cell_index = 1
+            paragraph_index = 1
+
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph(file_name, slide_index, shape_index,
+                row_index, cell_index, paragraph_index, 'png', out_path, nil, nil, nil, "password", folder_name)
+            expect(AsposeSlidesCloud::SpecUtils.testSlidesApi.object_exists(out_path).exists).to be true
+        end
+
         it 'get table cell portions' do
             folder_name = "TempSlidesSDK"
             file_name = "test.pptx"

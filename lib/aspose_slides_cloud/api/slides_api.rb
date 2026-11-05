@@ -8480,6 +8480,110 @@ module AsposeSlidesCloud
         :return_type => 'File')
       return data, status_code, headers
     end
+    # Render paragraph to specified picture format.
+    # @param name Presentation name.
+    # @param slide_index Slide index.
+    # @param shape_index Index of shape starting from 1
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Presentation folder.
+    # @param storage Presentation storage.
+    # @param fonts_folder Fonts folder.
+    # @param sub_shape Sub-shape path (e.g. \"3\", \"3/shapes/2).
+    def download_paragraph(name, slide_index, shape_index, paragraph_index, format, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil, sub_shape = nil)
+      data, _status_code, _headers = download_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, format, scale_x, scale_y, quality, password, folder, storage, fonts_folder, sub_shape)
+      data
+    end
+
+    # Render paragraph to specified picture format.
+    # @param name Presentation name.
+    # @param slide_index Slide index.
+    # @param shape_index Index of shape starting from 1
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Presentation folder.
+    # @param storage Presentation storage.
+    # @param fonts_folder Fonts folder.
+    # @param sub_shape Sub-shape path (e.g. \"3\", \"3/shapes/2).
+    def download_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, format, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil, sub_shape = nil)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SlidesApi.download_paragraph ...'
+      end
+
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SlidesApi.download_paragraph"
+      end
+      # verify the required parameter 'slide_index' is set
+      if @api_client.config.client_side_validation && slide_index.nil?
+        fail ArgumentError, "Missing the required parameter 'slide_index' when calling SlidesApi.download_paragraph"
+      end
+      # verify the required parameter 'shape_index' is set
+      if @api_client.config.client_side_validation && shape_index.nil?
+        fail ArgumentError, "Missing the required parameter 'shape_index' when calling SlidesApi.download_paragraph"
+      end
+      # verify the required parameter 'paragraph_index' is set
+      if @api_client.config.client_side_validation && paragraph_index.nil?
+        fail ArgumentError, "Missing the required parameter 'paragraph_index' when calling SlidesApi.download_paragraph"
+      end
+      # verify the required parameter 'format' is set
+      if @api_client.config.client_side_validation && format.nil?
+        fail ArgumentError, "Missing the required parameter 'format' when calling SlidesApi.download_paragraph"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['Jpeg', 'Png', 'Gif', 'Bmp', 'Tiff'].any?{ |s| s.casecmp(format)==0 }
+        fail ArgumentError, "Invalid value for parameter format: " + format + ". Must be one of Jpeg, Png, Gif, Bmp, Tiff"
+      end
+      # resource path
+      local_var_path = '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/{format}'
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'name', name)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'slideIndex', slide_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'shapeIndex', shape_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'paragraphIndex', paragraph_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'format', format)
+
+      # query parameters
+      query_params = {}
+      query_params[:'scaleX'] = @api_client.prepare_for_query(scale_x) unless scale_x.nil?
+      query_params[:'scaleY'] = @api_client.prepare_for_query(scale_y) unless scale_y.nil?
+      query_params[:'quality'] = @api_client.prepare_for_query(quality) unless quality.nil?
+      query_params[:'folder'] = @api_client.prepare_for_query(folder) unless folder.nil?
+      query_params[:'storage'] = @api_client.prepare_for_query(storage) unless storage.nil?
+      query_params[:'fontsFolder'] = @api_client.prepare_for_query(fonts_folder) unless fonts_folder.nil?
+      query_params[:'subShape'] = @api_client.prepare_for_query(sub_shape) unless sub_shape.nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'password'] = password unless password.nil?
+
+      # http body (model)
+      post_body = nil
+
+      # form parameters
+      post_files = []
+
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :body => post_body,
+        :files => post_files,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      return data, status_code, headers
+    end
     # Save a presentation to a specified format.
     # @param name Document name.
     # @param format Export format.
@@ -9084,6 +9188,121 @@ module AsposeSlidesCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(options)
+
+      # form parameters
+      post_files = []
+
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :body => post_body,
+        :files => post_files,
+        :auth_names => auth_names,
+        :return_type => 'File')
+      return data, status_code, headers
+    end
+    # Render table cell paragraph to specified picture format.
+    # @param name Document name.
+    # @param slide_index Slide index.
+    # @param shape_index Shape index.
+    # @param row_index Row index.
+    # @param cell_index Table cell index.
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Document folder.
+    # @param storage Document storage.
+    # @param fonts_folder Fonts folder.
+    def download_table_cell_paragraph(name, slide_index, shape_index, row_index, cell_index, paragraph_index, format, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil)
+      data, _status_code, _headers = download_table_cell_paragraph_with_http_info(name, slide_index, shape_index, row_index, cell_index, paragraph_index, format, scale_x, scale_y, quality, password, folder, storage, fonts_folder)
+      data
+    end
+
+    # Render table cell paragraph to specified picture format.
+    # @param name Document name.
+    # @param slide_index Slide index.
+    # @param shape_index Shape index.
+    # @param row_index Row index.
+    # @param cell_index Table cell index.
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Document folder.
+    # @param storage Document storage.
+    # @param fonts_folder Fonts folder.
+    def download_table_cell_paragraph_with_http_info(name, slide_index, shape_index, row_index, cell_index, paragraph_index, format, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SlidesApi.download_table_cell_paragraph ...'
+      end
+
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SlidesApi.download_table_cell_paragraph"
+      end
+      # verify the required parameter 'slide_index' is set
+      if @api_client.config.client_side_validation && slide_index.nil?
+        fail ArgumentError, "Missing the required parameter 'slide_index' when calling SlidesApi.download_table_cell_paragraph"
+      end
+      # verify the required parameter 'shape_index' is set
+      if @api_client.config.client_side_validation && shape_index.nil?
+        fail ArgumentError, "Missing the required parameter 'shape_index' when calling SlidesApi.download_table_cell_paragraph"
+      end
+      # verify the required parameter 'row_index' is set
+      if @api_client.config.client_side_validation && row_index.nil?
+        fail ArgumentError, "Missing the required parameter 'row_index' when calling SlidesApi.download_table_cell_paragraph"
+      end
+      # verify the required parameter 'cell_index' is set
+      if @api_client.config.client_side_validation && cell_index.nil?
+        fail ArgumentError, "Missing the required parameter 'cell_index' when calling SlidesApi.download_table_cell_paragraph"
+      end
+      # verify the required parameter 'paragraph_index' is set
+      if @api_client.config.client_side_validation && paragraph_index.nil?
+        fail ArgumentError, "Missing the required parameter 'paragraph_index' when calling SlidesApi.download_table_cell_paragraph"
+      end
+      # verify the required parameter 'format' is set
+      if @api_client.config.client_side_validation && format.nil?
+        fail ArgumentError, "Missing the required parameter 'format' when calling SlidesApi.download_table_cell_paragraph"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['Jpeg', 'Png', 'Gif', 'Bmp', 'Tiff'].any?{ |s| s.casecmp(format)==0 }
+        fail ArgumentError, "Invalid value for parameter format: " + format + ". Must be one of Jpeg, Png, Gif, Bmp, Tiff"
+      end
+      # resource path
+      local_var_path = '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/rows/{rowIndex}/cells/{cellIndex}/paragraphs/{paragraphIndex}/{format}'
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'name', name)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'slideIndex', slide_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'shapeIndex', shape_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'rowIndex', row_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'cellIndex', cell_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'paragraphIndex', paragraph_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'format', format)
+
+      # query parameters
+      query_params = {}
+      query_params[:'scaleX'] = @api_client.prepare_for_query(scale_x) unless scale_x.nil?
+      query_params[:'scaleY'] = @api_client.prepare_for_query(scale_y) unless scale_y.nil?
+      query_params[:'quality'] = @api_client.prepare_for_query(quality) unless quality.nil?
+      query_params[:'folder'] = @api_client.prepare_for_query(folder) unless folder.nil?
+      query_params[:'storage'] = @api_client.prepare_for_query(storage) unless storage.nil?
+      query_params[:'fontsFolder'] = @api_client.prepare_for_query(fonts_folder) unless fonts_folder.nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['multipart/form-data'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'password'] = password unless password.nil?
+
+      # http body (model)
+      post_body = nil
 
       # form parameters
       post_files = []
@@ -16114,6 +16333,116 @@ module AsposeSlidesCloud
         :auth_names => auth_names)
       return data, status_code, headers
     end
+    # Render paragraph to specified picture format and save it to the storage.
+    # @param name Presentation name.
+    # @param slide_index Slide index.
+    # @param shape_index Index of shape starting from 1
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param out_path Output path.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Presentation folder.
+    # @param storage Presentation storage.
+    # @param fonts_folder Fonts folder.
+    # @param sub_shape Sub-shape path (e.g. \"3\", \"3/shapes/2).
+    def save_paragraph(name, slide_index, shape_index, paragraph_index, format, out_path, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil, sub_shape = nil)
+      save_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, format, out_path, scale_x, scale_y, quality, password, folder, storage, fonts_folder, sub_shape)
+      nil
+    end
+
+    # Render paragraph to specified picture format and save it to the storage.
+    # @param name Presentation name.
+    # @param slide_index Slide index.
+    # @param shape_index Index of shape starting from 1
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param out_path Output path.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Presentation folder.
+    # @param storage Presentation storage.
+    # @param fonts_folder Fonts folder.
+    # @param sub_shape Sub-shape path (e.g. \"3\", \"3/shapes/2).
+    def save_paragraph_with_http_info(name, slide_index, shape_index, paragraph_index, format, out_path, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil, sub_shape = nil)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SlidesApi.save_paragraph ...'
+      end
+
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SlidesApi.save_paragraph"
+      end
+      # verify the required parameter 'slide_index' is set
+      if @api_client.config.client_side_validation && slide_index.nil?
+        fail ArgumentError, "Missing the required parameter 'slide_index' when calling SlidesApi.save_paragraph"
+      end
+      # verify the required parameter 'shape_index' is set
+      if @api_client.config.client_side_validation && shape_index.nil?
+        fail ArgumentError, "Missing the required parameter 'shape_index' when calling SlidesApi.save_paragraph"
+      end
+      # verify the required parameter 'paragraph_index' is set
+      if @api_client.config.client_side_validation && paragraph_index.nil?
+        fail ArgumentError, "Missing the required parameter 'paragraph_index' when calling SlidesApi.save_paragraph"
+      end
+      # verify the required parameter 'format' is set
+      if @api_client.config.client_side_validation && format.nil?
+        fail ArgumentError, "Missing the required parameter 'format' when calling SlidesApi.save_paragraph"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['Jpeg', 'Png', 'Gif', 'Bmp', 'Tiff'].any?{ |s| s.casecmp(format)==0 }
+        fail ArgumentError, "Invalid value for parameter format: " + format + ". Must be one of Jpeg, Png, Gif, Bmp, Tiff"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling SlidesApi.save_paragraph"
+      end
+      # resource path
+      local_var_path = '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/paragraphs/{paragraphIndex}/{format}'
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'name', name)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'slideIndex', slide_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'shapeIndex', shape_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'paragraphIndex', paragraph_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'format', format)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = @api_client.prepare_for_query(out_path) unless out_path.nil?
+      query_params[:'scaleX'] = @api_client.prepare_for_query(scale_x) unless scale_x.nil?
+      query_params[:'scaleY'] = @api_client.prepare_for_query(scale_y) unless scale_y.nil?
+      query_params[:'quality'] = @api_client.prepare_for_query(quality) unless quality.nil?
+      query_params[:'folder'] = @api_client.prepare_for_query(folder) unless folder.nil?
+      query_params[:'storage'] = @api_client.prepare_for_query(storage) unless storage.nil?
+      query_params[:'fontsFolder'] = @api_client.prepare_for_query(fonts_folder) unless fonts_folder.nil?
+      query_params[:'subShape'] = @api_client.prepare_for_query(sub_shape) unless sub_shape.nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'password'] = password unless password.nil?
+
+      # http body (model)
+      post_body = nil
+
+      # form parameters
+      post_files = []
+
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :body => post_body,
+        :files => post_files,
+        :auth_names => auth_names)
+      return data, status_code, headers
+    end
     # Save a presentation to a specified format.
     # @param name Document name.
     # @param format Export format.
@@ -16697,6 +17026,127 @@ module AsposeSlidesCloud
 
       # http body (model)
       post_body = @api_client.object_to_http_body(options)
+
+      # form parameters
+      post_files = []
+
+      auth_names = ['JWT']
+      data, status_code, headers = @api_client.call_api(:PUT, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :body => post_body,
+        :files => post_files,
+        :auth_names => auth_names)
+      return data, status_code, headers
+    end
+    # Render table cell paragraph to specified picture format and save it to the storage.
+    # @param name Document name.
+    # @param slide_index Slide index.
+    # @param shape_index Shape index.
+    # @param row_index Row index.
+    # @param cell_index Table cell index.
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param out_path Output path.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Document folder.
+    # @param storage Document storage.
+    # @param fonts_folder Fonts folder.
+    def save_table_cell_paragraph(name, slide_index, shape_index, row_index, cell_index, paragraph_index, format, out_path, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil)
+      save_table_cell_paragraph_with_http_info(name, slide_index, shape_index, row_index, cell_index, paragraph_index, format, out_path, scale_x, scale_y, quality, password, folder, storage, fonts_folder)
+      nil
+    end
+
+    # Render table cell paragraph to specified picture format and save it to the storage.
+    # @param name Document name.
+    # @param slide_index Slide index.
+    # @param shape_index Shape index.
+    # @param row_index Row index.
+    # @param cell_index Table cell index.
+    # @param paragraph_index Paragraph index.
+    # @param format Export picture format.
+    # @param out_path Output path.
+    # @param scale_x X scale ratio.
+    # @param scale_y Y scale ratio.
+    # @param quality Image quality (1 to 100); applies to JPEG only.
+    # @param password Document password.
+    # @param folder Document folder.
+    # @param storage Document storage.
+    # @param fonts_folder Fonts folder.
+    def save_table_cell_paragraph_with_http_info(name, slide_index, shape_index, row_index, cell_index, paragraph_index, format, out_path, scale_x = nil, scale_y = nil, quality = nil, password = nil, folder = nil, storage = nil, fonts_folder = nil)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: SlidesApi.save_table_cell_paragraph ...'
+      end
+
+      # verify the required parameter 'name' is set
+      if @api_client.config.client_side_validation && name.nil?
+        fail ArgumentError, "Missing the required parameter 'name' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # verify the required parameter 'slide_index' is set
+      if @api_client.config.client_side_validation && slide_index.nil?
+        fail ArgumentError, "Missing the required parameter 'slide_index' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # verify the required parameter 'shape_index' is set
+      if @api_client.config.client_side_validation && shape_index.nil?
+        fail ArgumentError, "Missing the required parameter 'shape_index' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # verify the required parameter 'row_index' is set
+      if @api_client.config.client_side_validation && row_index.nil?
+        fail ArgumentError, "Missing the required parameter 'row_index' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # verify the required parameter 'cell_index' is set
+      if @api_client.config.client_side_validation && cell_index.nil?
+        fail ArgumentError, "Missing the required parameter 'cell_index' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # verify the required parameter 'paragraph_index' is set
+      if @api_client.config.client_side_validation && paragraph_index.nil?
+        fail ArgumentError, "Missing the required parameter 'paragraph_index' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # verify the required parameter 'format' is set
+      if @api_client.config.client_side_validation && format.nil?
+        fail ArgumentError, "Missing the required parameter 'format' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # verify enum value
+      if @api_client.config.client_side_validation && !['Jpeg', 'Png', 'Gif', 'Bmp', 'Tiff'].any?{ |s| s.casecmp(format)==0 }
+        fail ArgumentError, "Invalid value for parameter format: " + format + ". Must be one of Jpeg, Png, Gif, Bmp, Tiff"
+      end
+      # verify the required parameter 'out_path' is set
+      if @api_client.config.client_side_validation && out_path.nil?
+        fail ArgumentError, "Missing the required parameter 'out_path' when calling SlidesApi.save_table_cell_paragraph"
+      end
+      # resource path
+      local_var_path = '/slides/{name}/slides/{slideIndex}/shapes/{shapeIndex}/rows/{rowIndex}/cells/{cellIndex}/paragraphs/{paragraphIndex}/{format}'
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'name', name)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'slideIndex', slide_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'shapeIndex', shape_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'rowIndex', row_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'cellIndex', cell_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'paragraphIndex', paragraph_index)
+      local_var_path = @api_client.replace_path_parameter(local_var_path, 'format', format)
+
+      # query parameters
+      query_params = {}
+      query_params[:'outPath'] = @api_client.prepare_for_query(out_path) unless out_path.nil?
+      query_params[:'scaleX'] = @api_client.prepare_for_query(scale_x) unless scale_x.nil?
+      query_params[:'scaleY'] = @api_client.prepare_for_query(scale_y) unless scale_y.nil?
+      query_params[:'quality'] = @api_client.prepare_for_query(quality) unless quality.nil?
+      query_params[:'folder'] = @api_client.prepare_for_query(folder) unless folder.nil?
+      query_params[:'storage'] = @api_client.prepare_for_query(storage) unless storage.nil?
+      query_params[:'fontsFolder'] = @api_client.prepare_for_query(fonts_folder) unless fonts_folder.nil?
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+      header_params[:'password'] = password unless password.nil?
+
+      # http body (model)
+      post_body = nil
 
       # form parameters
       post_files = []

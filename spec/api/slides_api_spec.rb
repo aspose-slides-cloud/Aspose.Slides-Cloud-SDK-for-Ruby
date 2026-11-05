@@ -22872,6 +22872,462 @@ describe 'SlidesApi' do
     end
   end
 
+  # unit tests for download_paragraph
+  # Render paragraph to specified picture format.
+  # @param name Presentation name.
+  # @param slide_index Slide index.
+  # @param shape_index Index of shape starting from 1
+  # @param paragraph_index Paragraph index.
+  # @param format Export picture format.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Float] :scale_x X scale ratio.
+  # @option opts [Float] :scale_y Y scale ratio.
+  # @option opts [Integer] :quality Image quality (1 to 100); applies to JPEG only.
+  # @option opts [String] :password Document password.
+  # @option opts [String] :folder Presentation folder.
+  # @option opts [String] :storage Presentation storage.
+  # @option opts [String] :fonts_folder Fonts folder.
+  # @option opts [String] :sub_shape Sub-shape path (e.g. \&quot;3\&quot;, \&quot;3/shapes/2).
+  # @return [File]
+  describe 'download_paragraph test' do
+    it 'should work' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', nil, nil)
+      o, c, _h = AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+      code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', nil, nil, nil)
+      expect(c).to eq(code)
+      expect(o).not_to be_nil
+    end
+
+    it 'invalid name' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramname = AsposeSlidesCloud::SpecUtils.invalidize_param_value('name', 'DownloadParagraph', paramname, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'name', paramname)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'name')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'name', paramname, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'name', paramname, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid slide_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('slideIndex', 'DownloadParagraph', paramslide_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'slideIndex', paramslide_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'slideIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid shape_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('shapeIndex', 'DownloadParagraph', paramshape_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'shapeIndex', paramshape_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'shapeIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid paragraph_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('paragraphIndex', 'DownloadParagraph', paramparagraph_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'paragraphIndex', paramparagraph_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'paragraphIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid format' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramformat = AsposeSlidesCloud::SpecUtils.invalidize_param_value('format', 'DownloadParagraph', paramformat, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'format', paramformat)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'format')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'format', paramformat, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'format', paramformat, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_x' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleX', 'DownloadParagraph', paramscale_x, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'scaleX', paramscale_x)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'scaleX')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_y' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleY', 'DownloadParagraph', paramscale_y, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'scaleY', paramscale_y)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'scaleY')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid quality' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramquality = AsposeSlidesCloud::SpecUtils.invalidize_param_value('quality', 'DownloadParagraph', paramquality, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'quality', paramquality)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'quality')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'quality', paramquality, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'quality', paramquality, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid password' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      parampassword = AsposeSlidesCloud::SpecUtils.invalidize_param_value('password', 'DownloadParagraph', parampassword, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'password', parampassword)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'password')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'password', parampassword, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'password', parampassword, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('folder', 'DownloadParagraph', paramfolder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'folder', paramfolder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'folder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'folder', paramfolder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'folder', paramfolder, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid storage' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.invalidize_param_value('storage', 'DownloadParagraph', paramstorage, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'storage', paramstorage)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'storage')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'storage', paramstorage, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'storage', paramstorage, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid fonts_folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('fontsFolder', 'DownloadParagraph', paramfonts_folder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'fontsFolder', paramfonts_folder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'fontsFolder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'fontsFolder', paramfonts_folder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'fontsFolder', paramfonts_folder, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid sub_shape' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'DownloadParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.invalidize_param_value('subShape', 'DownloadParagraph', paramsub_shape, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadParagraph', 'subShape', paramsub_shape)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadParagraph', 'subShape')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'subShape', paramsub_shape, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadParagraph', 'subShape', paramsub_shape, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+  end
+
   # unit tests for download_presentation
   # Save a presentation to a specified format.
   # @param name Document name.
@@ -25104,6 +25560,510 @@ describe 'SlidesApi' do
         expect(e.response_body).to include(message)
       rescue ArgumentError => e
         code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadSpecialSlideShape', 'subShape', paramsub_shape, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+  end
+
+  # unit tests for download_table_cell_paragraph
+  # Render table cell paragraph to specified picture format.
+  # @param name Document name.
+  # @param slide_index Slide index.
+  # @param shape_index Shape index.
+  # @param row_index Row index.
+  # @param cell_index Table cell index.
+  # @param paragraph_index Paragraph index.
+  # @param format Export picture format.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Float] :scale_x X scale ratio.
+  # @option opts [Float] :scale_y Y scale ratio.
+  # @option opts [Integer] :quality Image quality (1 to 100); applies to JPEG only.
+  # @option opts [String] :password Document password.
+  # @option opts [String] :folder Document folder.
+  # @option opts [String] :storage Document storage.
+  # @option opts [String] :fonts_folder Fonts folder.
+  # @return [File]
+  describe 'download_table_cell_paragraph test' do
+    it 'should work' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', nil, nil)
+      o, c, _h = AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+      code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', nil, nil, nil)
+      expect(c).to eq(code)
+      expect(o).not_to be_nil
+    end
+
+    it 'invalid name' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramname = AsposeSlidesCloud::SpecUtils.invalidize_param_value('name', 'DownloadTableCellParagraph', paramname, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'name', paramname)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'name')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'name', paramname, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'name', paramname, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid slide_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('slideIndex', 'DownloadTableCellParagraph', paramslide_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'slideIndex', paramslide_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'slideIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid shape_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('shapeIndex', 'DownloadTableCellParagraph', paramshape_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'shapeIndex', paramshape_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'shapeIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid row_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('rowIndex', 'DownloadTableCellParagraph', paramrow_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'rowIndex', paramrow_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'rowIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'rowIndex', paramrow_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'rowIndex', paramrow_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid cell_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('cellIndex', 'DownloadTableCellParagraph', paramcell_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'cellIndex', paramcell_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'cellIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'cellIndex', paramcell_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'cellIndex', paramcell_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid paragraph_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('paragraphIndex', 'DownloadTableCellParagraph', paramparagraph_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'paragraphIndex', paramparagraph_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'paragraphIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid format' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramformat = AsposeSlidesCloud::SpecUtils.invalidize_param_value('format', 'DownloadTableCellParagraph', paramformat, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'format', paramformat)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'format')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'format', paramformat, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'format', paramformat, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_x' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleX', 'DownloadTableCellParagraph', paramscale_x, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'scaleX', paramscale_x)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'scaleX')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_y' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleY', 'DownloadTableCellParagraph', paramscale_y, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'scaleY', paramscale_y)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'scaleY')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid quality' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramquality = AsposeSlidesCloud::SpecUtils.invalidize_param_value('quality', 'DownloadTableCellParagraph', paramquality, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'quality', paramquality)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'quality')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'quality', paramquality, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'quality', paramquality, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid password' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      parampassword = AsposeSlidesCloud::SpecUtils.invalidize_param_value('password', 'DownloadTableCellParagraph', parampassword, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'password', parampassword)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'password')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'password', parampassword, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'password', parampassword, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('folder', 'DownloadTableCellParagraph', paramfolder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'folder', paramfolder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'folder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'folder', paramfolder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'folder', paramfolder, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid storage' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.invalidize_param_value('storage', 'DownloadTableCellParagraph', paramstorage, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'storage', paramstorage)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'storage')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'storage', paramstorage, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'storage', paramstorage, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid fonts_folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'DownloadTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'DownloadTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'DownloadTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'DownloadTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'DownloadTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'DownloadTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'DownloadTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'DownloadTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'DownloadTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('fontsFolder', 'DownloadTableCellParagraph', paramfonts_folder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('DownloadTableCellParagraph', 'fontsFolder', paramfonts_folder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.download_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('DownloadTableCellParagraph', 'fontsFolder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'fontsFolder', paramfonts_folder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('DownloadTableCellParagraph', 'fontsFolder', paramfonts_folder, 'String')
         expect(400).to eq(code)
         expect(e.message).to include(message)
       end
@@ -43209,6 +44169,509 @@ describe 'SlidesApi' do
     end
   end
 
+  # unit tests for save_paragraph
+  # Render paragraph to specified picture format and save it to the storage.
+  # @param name Presentation name.
+  # @param slide_index Slide index.
+  # @param shape_index Index of shape starting from 1
+  # @param paragraph_index Paragraph index.
+  # @param format Export picture format.
+  # @param out_path Output path.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Float] :scale_x X scale ratio.
+  # @option opts [Float] :scale_y Y scale ratio.
+  # @option opts [Integer] :quality Image quality (1 to 100); applies to JPEG only.
+  # @option opts [String] :password Document password.
+  # @option opts [String] :folder Presentation folder.
+  # @option opts [String] :storage Presentation storage.
+  # @option opts [String] :fonts_folder Fonts folder.
+  # @option opts [String] :sub_shape Sub-shape path (e.g. \&quot;3\&quot;, \&quot;3/shapes/2).
+  # @return [nil]
+  describe 'save_paragraph test' do
+    it 'should work' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', nil, nil)
+      o, c, _h = AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+      code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', nil, nil, nil)
+      expect(c).to eq(code)
+    end
+
+    it 'invalid name' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramname = AsposeSlidesCloud::SpecUtils.invalidize_param_value('name', 'SaveParagraph', paramname, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'name', paramname)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'name')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'name', paramname, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'name', paramname, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid slide_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('slideIndex', 'SaveParagraph', paramslide_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'slideIndex', paramslide_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'slideIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid shape_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('shapeIndex', 'SaveParagraph', paramshape_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'shapeIndex', paramshape_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'shapeIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid paragraph_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('paragraphIndex', 'SaveParagraph', paramparagraph_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'paragraphIndex', paramparagraph_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'paragraphIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid format' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramformat = AsposeSlidesCloud::SpecUtils.invalidize_param_value('format', 'SaveParagraph', paramformat, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'format', paramformat)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'format')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'format', paramformat, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'format', paramformat, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid out_path' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.invalidize_param_value('outPath', 'SaveParagraph', paramout_path, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'outPath', paramout_path)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'outPath')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'outPath', paramout_path, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'outPath', paramout_path, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_x' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleX', 'SaveParagraph', paramscale_x, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'scaleX', paramscale_x)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'scaleX')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_y' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleY', 'SaveParagraph', paramscale_y, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'scaleY', paramscale_y)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'scaleY')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid quality' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramquality = AsposeSlidesCloud::SpecUtils.invalidize_param_value('quality', 'SaveParagraph', paramquality, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'quality', paramquality)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'quality')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'quality', paramquality, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'quality', paramquality, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid password' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      parampassword = AsposeSlidesCloud::SpecUtils.invalidize_param_value('password', 'SaveParagraph', parampassword, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'password', parampassword)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'password')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'password', parampassword, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'password', parampassword, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('folder', 'SaveParagraph', paramfolder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'folder', paramfolder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'folder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'folder', paramfolder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'folder', paramfolder, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid storage' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.invalidize_param_value('storage', 'SaveParagraph', paramstorage, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'storage', paramstorage)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'storage')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'storage', paramstorage, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'storage', paramstorage, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid fonts_folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('fontsFolder', 'SaveParagraph', paramfonts_folder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'fontsFolder', paramfonts_folder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'fontsFolder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'fontsFolder', paramfonts_folder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'fontsFolder', paramfonts_folder, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid sub_shape' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.get_param_value('subShape', 'SaveParagraph', 'String')
+      paramsub_shape = AsposeSlidesCloud::SpecUtils.invalidize_param_value('subShape', 'SaveParagraph', paramsub_shape, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveParagraph', 'subShape', paramsub_shape)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder, paramsub_shape)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveParagraph', 'subShape')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'subShape', paramsub_shape, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveParagraph', 'subShape', paramsub_shape, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+  end
+
   # unit tests for save_presentation
   # Save a presentation to a specified format.
   # @param name Document name.
@@ -45639,6 +47102,559 @@ describe 'SlidesApi' do
         expect(e.response_body).to include(message)
       rescue ArgumentError => e
         code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveSpecialSlideShape', 'subShape', paramsub_shape, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+  end
+
+  # unit tests for save_table_cell_paragraph
+  # Render table cell paragraph to specified picture format and save it to the storage.
+  # @param name Document name.
+  # @param slide_index Slide index.
+  # @param shape_index Shape index.
+  # @param row_index Row index.
+  # @param cell_index Table cell index.
+  # @param paragraph_index Paragraph index.
+  # @param format Export picture format.
+  # @param out_path Output path.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Float] :scale_x X scale ratio.
+  # @option opts [Float] :scale_y Y scale ratio.
+  # @option opts [Integer] :quality Image quality (1 to 100); applies to JPEG only.
+  # @option opts [String] :password Document password.
+  # @option opts [String] :folder Document folder.
+  # @option opts [String] :storage Document storage.
+  # @option opts [String] :fonts_folder Fonts folder.
+  # @return [nil]
+  describe 'save_table_cell_paragraph test' do
+    it 'should work' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', nil, nil)
+      o, c, _h = AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+      code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', nil, nil, nil)
+      expect(c).to eq(code)
+    end
+
+    it 'invalid name' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramname = AsposeSlidesCloud::SpecUtils.invalidize_param_value('name', 'SaveTableCellParagraph', paramname, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'name', paramname)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'name')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'name', paramname, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'name', paramname, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid slide_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('slideIndex', 'SaveTableCellParagraph', paramslide_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'slideIndex', paramslide_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'slideIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'slideIndex', paramslide_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid shape_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('shapeIndex', 'SaveTableCellParagraph', paramshape_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'shapeIndex', paramshape_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'shapeIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'shapeIndex', paramshape_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid row_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('rowIndex', 'SaveTableCellParagraph', paramrow_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'rowIndex', paramrow_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'rowIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'rowIndex', paramrow_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'rowIndex', paramrow_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid cell_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('cellIndex', 'SaveTableCellParagraph', paramcell_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'cellIndex', paramcell_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'cellIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'cellIndex', paramcell_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'cellIndex', paramcell_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid paragraph_index' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.invalidize_param_value('paragraphIndex', 'SaveTableCellParagraph', paramparagraph_index, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'paragraphIndex', paramparagraph_index)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'paragraphIndex')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'paragraphIndex', paramparagraph_index, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid format' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramformat = AsposeSlidesCloud::SpecUtils.invalidize_param_value('format', 'SaveTableCellParagraph', paramformat, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'format', paramformat)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'format')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'format', paramformat, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'format', paramformat, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid out_path' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.invalidize_param_value('outPath', 'SaveTableCellParagraph', paramout_path, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'outPath', paramout_path)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'outPath')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'outPath', paramout_path, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'outPath', paramout_path, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_x' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleX', 'SaveTableCellParagraph', paramscale_x, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'scaleX', paramscale_x)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'scaleX')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'scaleX', paramscale_x, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid scale_y' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.invalidize_param_value('scaleY', 'SaveTableCellParagraph', paramscale_y, 'Float')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'scaleY', paramscale_y)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'scaleY')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'scaleY', paramscale_y, 'Float')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid quality' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramquality = AsposeSlidesCloud::SpecUtils.invalidize_param_value('quality', 'SaveTableCellParagraph', paramquality, 'Integer')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'quality', paramquality)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'quality')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'quality', paramquality, 'Integer')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'quality', paramquality, 'Integer')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid password' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      parampassword = AsposeSlidesCloud::SpecUtils.invalidize_param_value('password', 'SaveTableCellParagraph', parampassword, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'password', parampassword)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'password')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'password', parampassword, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'password', parampassword, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('folder', 'SaveTableCellParagraph', paramfolder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'folder', paramfolder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'folder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'folder', paramfolder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'folder', paramfolder, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid storage' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.invalidize_param_value('storage', 'SaveTableCellParagraph', paramstorage, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'storage', paramstorage)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'storage')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'storage', paramstorage, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'storage', paramstorage, 'String')
+        expect(400).to eq(code)
+        expect(e.message).to include(message)
+      end
+    end
+
+    it 'invalid fonts_folder' do
+      paramname = AsposeSlidesCloud::SpecUtils.get_param_value('name', 'SaveTableCellParagraph', 'String')
+      paramslide_index = AsposeSlidesCloud::SpecUtils.get_param_value('slideIndex', 'SaveTableCellParagraph', 'Integer')
+      paramshape_index = AsposeSlidesCloud::SpecUtils.get_param_value('shapeIndex', 'SaveTableCellParagraph', 'Integer')
+      paramrow_index = AsposeSlidesCloud::SpecUtils.get_param_value('rowIndex', 'SaveTableCellParagraph', 'Integer')
+      paramcell_index = AsposeSlidesCloud::SpecUtils.get_param_value('cellIndex', 'SaveTableCellParagraph', 'Integer')
+      paramparagraph_index = AsposeSlidesCloud::SpecUtils.get_param_value('paragraphIndex', 'SaveTableCellParagraph', 'Integer')
+      paramformat = AsposeSlidesCloud::SpecUtils.get_param_value('format', 'SaveTableCellParagraph', 'String')
+      paramout_path = AsposeSlidesCloud::SpecUtils.get_param_value('outPath', 'SaveTableCellParagraph', 'String')
+      paramscale_x = AsposeSlidesCloud::SpecUtils.get_param_value('scaleX', 'SaveTableCellParagraph', 'Float')
+      paramscale_y = AsposeSlidesCloud::SpecUtils.get_param_value('scaleY', 'SaveTableCellParagraph', 'Float')
+      paramquality = AsposeSlidesCloud::SpecUtils.get_param_value('quality', 'SaveTableCellParagraph', 'Integer')
+      parampassword = AsposeSlidesCloud::SpecUtils.get_param_value('password', 'SaveTableCellParagraph', 'String')
+      paramfolder = AsposeSlidesCloud::SpecUtils.get_param_value('folder', 'SaveTableCellParagraph', 'String')
+      paramstorage = AsposeSlidesCloud::SpecUtils.get_param_value('storage', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.get_param_value('fontsFolder', 'SaveTableCellParagraph', 'String')
+      paramfonts_folder = AsposeSlidesCloud::SpecUtils.invalidize_param_value('fontsFolder', 'SaveTableCellParagraph', paramfonts_folder, 'String')
+      AsposeSlidesCloud::SpecUtils.initialize('SaveTableCellParagraph', 'fontsFolder', paramfonts_folder)
+      begin
+        AsposeSlidesCloud::SpecUtils.testSlidesApi.save_table_cell_paragraph_with_http_info(paramname, paramslide_index, paramshape_index, paramrow_index, paramcell_index, paramparagraph_index, paramformat, paramout_path, paramscale_x, paramscale_y, paramquality, parampassword, paramfolder, paramstorage, paramfonts_folder)
+        unless AsposeSlidesCloud::SpecUtils.no_exception?('SaveTableCellParagraph', 'fontsFolder')
+          fail "An exception expected"
+        end
+      rescue AsposeSlidesCloud::ApiError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'fontsFolder', paramfonts_folder, 'String')
+        expect(e.code).to eq(code)
+        expect(e.response_body).to include(message)
+      rescue ArgumentError => e
+        code, message = AsposeSlidesCloud::SpecUtils.get_expected_error('SaveTableCellParagraph', 'fontsFolder', paramfonts_folder, 'String')
         expect(400).to eq(code)
         expect(e.message).to include(message)
       end

@@ -326,5 +326,78 @@ describe 'UseCases' do
                 password, folder_name, "", sub_shape)
             expect(response.default_tab_size).to eq(72)
         end
+
+        it "download paragraph" do
+            folder_name = "TempSlidesSDK"
+            file_name = "test.pptx"
+            password = "password"
+            slide_index = 6
+            shape_index = 2
+            paragraph_index = 1
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+            response = AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph(file_name, slide_index, shape_index, paragraph_index, 
+                'png', nil, nil, nil, password, folder_name)
+            expect(response).not_to be_nil
+            expect(response.size).to be > 0
+        end
+
+        it "download subshape paragraph" do
+            folder_name = "TempSlidesSDK"
+            file_name = "test.pptx"
+            password = "password"
+            slide_index = 6
+            shape_index = 3
+            sub_shape = "1"
+            paragraph_index = 1
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+            response = AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph(file_name, slide_index, shape_index, paragraph_index, 
+                'png', nil, nil, nil, password, folder_name, nil, nil, sub_shape)
+            expect(response).not_to be_nil
+            expect(response.size).to be > 0
+        end
+
+        it "download paragraph scaled" do
+            folder_name = "TempSlidesSDK"
+            file_name = "test.pptx"
+            password = "password"
+            slide_index = 6
+            shape_index = 2
+            paragraph_index = 1
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+            response = AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph(file_name, slide_index, shape_index, paragraph_index, 
+                'png', nil, nil, nil, password, folder_name)
+            scaled_response = AsposeSlidesCloud::SpecUtils.testSlidesApi.download_paragraph(file_name, slide_index, shape_index, paragraph_index, 
+                'png', 2, 2, nil, password, folder_name)
+            expect(scaled_response.size).to be > response.size
+        end
+
+        it "save paragraph" do
+            folder_name = "TempSlidesSDK"
+            file_name = "test.pptx"
+            password = "password"
+            slide_index = 6
+            shape_index = 2
+            paragraph_index = 1
+            out_path = folder_name + "/paragraph.png"
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph(file_name, slide_index, shape_index, paragraph_index, 
+                'png', out_path, nil, nil, nil, password, folder_name)
+            expect(AsposeSlidesCloud::SpecUtils.testSlidesApi.object_exists(out_path).exists).to be true
+        end
+
+        it "save subshape paragraph" do
+            folder_name = "TempSlidesSDK"
+            file_name = "test.pptx"
+            password = "password"
+            slide_index = 6
+            shape_index = 3
+            sub_shape = "1"
+            paragraph_index = 1
+            out_path = folder_name + "/paragraph.png"
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.save_paragraph(file_name, slide_index, shape_index, paragraph_index, 
+                'png', out_path, nil, nil, nil, password, folder_name, nil, nil, sub_shape)
+            expect(AsposeSlidesCloud::SpecUtils.testSlidesApi.object_exists(out_path).exists).to be true
+        end
     end
 end

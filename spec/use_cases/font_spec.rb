@@ -66,6 +66,7 @@ describe 'UseCases' do
             folder_name = "TempSlidesSDK"
             file_name = "test.pptx"
             font_name = "Calibri"
+            AsposeSlidesCloud::SpecUtils.testSlidesApi.copy_file("TempTests/" + file_name, folder_name + "/" + file_name)
             response = AsposeSlidesCloud::SpecUtils.testSlidesApi.set_embedded_fonts(file_name, nil, [ font_name ], false, "password", folder_name)
             expect(response.list.length).to eq(4)
             expect(response.list[2].is_embedded).to eq(true)
@@ -98,7 +99,7 @@ describe 'UseCases' do
             file_name = "test.pptx"
             sourceDocument = File.binread("TestData/test.pptx")
             sourceFont = File.binread("TestData/calibri.ttf")
-            response = AsposeSlidesCloud::SpecUtils.testSlidesApi.set_embedded_font_from_request_online(sourceDocument, [ sourceFont ], nil, false, "password")
+            response = AsposeSlidesCloud::SpecUtils.testSlidesApi.set_embedded_fonts_online(sourceDocument, [ sourceFont ], nil, false, "password")
             expect(response.size).not_to eq(sourceDocument.size)
         end
 

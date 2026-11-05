@@ -43,6 +43,9 @@ module AsposeSlidesCloud
     # true to disable ligatures in the rendered output.
     attr_accessor :disable_font_ligatures
 
+    # Represents the pictures compression level. Pictures are not compressed (DocumentResolution) by default. Not applied when TemplatesPath is set.
+    attr_accessor :pictures_compression
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       super.merge({
@@ -52,6 +55,7 @@ module AsposeSlidesCloud
         :'slides_layout_options' => :'SlidesLayoutOptions',
         :'templates_path' => :'TemplatesPath',
         :'disable_font_ligatures' => :'DisableFontLigatures',
+        :'pictures_compression' => :'PicturesCompression',
       })
     end
 
@@ -64,6 +68,7 @@ module AsposeSlidesCloud
         :'slides_layout_options' => :'SlidesLayoutOptions',
         :'templates_path' => :'String',
         :'disable_font_ligatures' => :'BOOLEAN',
+        :'pictures_compression' => :'String',
       })
     end
 
@@ -95,6 +100,10 @@ module AsposeSlidesCloud
       if attributes.has_key?(:'DisableFontLigatures')
         self.disable_font_ligatures = attributes[:'DisableFontLigatures']
       end
+
+      if attributes.has_key?(:'PicturesCompression')
+        self.pictures_compression = attributes[:'PicturesCompression']
+      end
       self.format = 'html5'
     end
 
@@ -109,7 +118,19 @@ module AsposeSlidesCloud
     # @return true if the model is valid
     def valid?
       return false if !super
+      pictures_compression_validator = EnumAttributeValidator.new('String', ['Dpi330', 'Dpi220', 'Dpi150', 'Dpi96', 'Dpi72', 'DocumentResolution'])
+      return false unless pictures_compression_validator.valid?(@pictures_compression)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] pictures_compression Object to be assigned
+    def pictures_compression=(pictures_compression)
+      validator = EnumAttributeValidator.new('String', ['Dpi330', 'Dpi220', 'Dpi150', 'Dpi96', 'Dpi72', 'DocumentResolution'])
+      unless validator.valid?(pictures_compression)
+        fail ArgumentError, 'invalid value for "pictures_compression", must be one of #{validator.allowable_values}.'
+      end
+      @pictures_compression = pictures_compression
     end
 
     # Checks equality by comparing each attribute.
@@ -129,7 +150,8 @@ module AsposeSlidesCloud
           embed_images == o.embed_images &&
           slides_layout_options == o.slides_layout_options &&
           templates_path == o.templates_path &&
-          disable_font_ligatures == o.disable_font_ligatures
+          disable_font_ligatures == o.disable_font_ligatures &&
+          pictures_compression == o.pictures_compression
     end
 
     # @see the `==` method
@@ -141,7 +163,7 @@ module AsposeSlidesCloud
     # Calculates hash code according to all attributes.
     # @return [Fixnum] Hash code
     def hash
-      [default_regular_font, delete_embedded_binary_objects, gradient_style, font_fallback_rules, font_subst_rules, skip_java_script_links, format, animate_transitions, animate_shapes, embed_images, slides_layout_options, templates_path, disable_font_ligatures].hash
+      [default_regular_font, delete_embedded_binary_objects, gradient_style, font_fallback_rules, font_subst_rules, skip_java_script_links, format, animate_transitions, animate_shapes, embed_images, slides_layout_options, templates_path, disable_font_ligatures, pictures_compression].hash
     end
   end
 end
